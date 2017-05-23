@@ -1,9 +1,10 @@
-
-theme: jekyll-theme-minimal
+# Dependencies
+markdown:         kramdown
+kramdown:
+  extensions: ["tables"]
 title: Juchan Kim
 description: Software Engineer in Los Angeles, CA
-show_downloads: false
-google_analytics:
+paginate: 1
 pages_list:       
   About: '/about'
   Resume: 'assets/resume.pdf'
