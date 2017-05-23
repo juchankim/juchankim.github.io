@@ -1,5 +1,6 @@
-title: Minimal theme
-description: Minimal is a theme for GitHub Pages.
+
+theme: jekyll-theme-minimal
+title: Juchan Kim
+description: Software Engineer in Los Angeles, CA
 show_downloads: true
 google_analytics:
-theme: 
