@@ -3,7 +3,7 @@ layout: page
 title: About
 ---
 
-![Profile](/assets/profile.jpg =250x)
+<img src="/assets/profile.jpg" height="360">
 
 I am a software engineer currently based in Los Angeles, CA.
 In May 2017, I graduated from UC Berkeley with B.S. in Electrical Engineering and Computer Science.  
