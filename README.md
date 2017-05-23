@@ -1,1 +1,1 @@
-Juchan Kim's website: juchankim.github.io
+[Juchan Kim's website](https://juchankim.github.io/)
