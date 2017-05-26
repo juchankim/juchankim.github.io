@@ -1,6 +1,6 @@
 ---
 layout: page
-title: ABOUT
+title: About
 ---
 
 <img src="/assets/profile.jpg" height="360">
