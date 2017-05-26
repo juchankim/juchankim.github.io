@@ -6,5 +6,6 @@ title: Juchan Kim
 description: Software Engineer in Los Angeles, CA
 paginate: 1
 pages_list:       
-  About: '/about'
-  Resume: 'assets/resume.pdf'
+  ABOUT: '/about'
+  ARCHIVE: '/archive'
+  RESUME: 'assets/resume.pdf'

@@ -2,8 +2,7 @@
 layout: default
 title: Home
 ---
-
-### Be Happy. 
+<br><br>
 
 <img src="/assets/main.jpg">
 
