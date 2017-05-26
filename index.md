@@ -6,4 +6,4 @@ title: Home
 
 <img src="/assets/main.jpg">
 
-Projects posts coming soon. 
+<!-- Projects posts coming soon.  -->
