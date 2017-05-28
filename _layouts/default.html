@@ -19,16 +19,13 @@
         <a href = "{{ '/' }}"><img src="/assets/title.png"></a>
         <br><br>
         <!-- <p>{{ site.description | default: site.github.project_tagline }}</p> -->
-
+        {% for page in site.pages_list %}
+            <p class="view"><a href="{{ page[1]  }}">{{ page[0] }}</a></p>
+        {% endfor %}
 
 
       </header>
       <section>
-        
-
-      {% for page in site.pages_list %}
-          <p class="view"><a href="{{ page[1]  }}">{{ page[0] }}</a></p>
-      {% endfor %}
 
       {{ content }}
 
