@@ -59,7 +59,11 @@ a:hover small {
   width:860px;
   margin:0 auto;
 }
-
+.mapdiv{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
 blockquote {
   border-left:1px solid #e5e5e5;
   margin:0;
