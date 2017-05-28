@@ -6,6 +6,7 @@
     <title>{{ site.title | default: site.github.repository_name }}</title>
 
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <meta name="viewport" content="width=device-width">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -25,11 +26,11 @@
             <p class="view"><a href="{{ page[1]  }}">{{ page[0] }}</a></p>
         {% endfor %}
 
-        {% if site.github.is_user_page %}
+<!--         {% if site.github.is_user_page %}
           <p class="view"><a href="{{ site.github.owner_url }}">GITHUB</a></p>
         {% endif %}
 
-        <p class="view"><a href="https://www.linkedin.com/in/juchankim/">LINKEDIN</a></p>
+        <p class="view"><a href="https://www.linkedin.com/in/juchankim/">LINKEDIN</a></p> -->
 
       </header>
       <section>
@@ -37,6 +38,46 @@
       {{ content }}
 
       </section>
+      <footer>
+        <a href="assets/resume.pdf"> 
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-file-text fa-stack-1x fa-inverse"></i>
+            </span>
+        </a>
+        {% if site.instagram_username %}
+          <a href="https://www.instagram.com/{{ site.instagram_username }}">
+              <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+              </span>
+          </a>
+        {% endif %}
+        {% if site.linkedin_username %}
+          <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}">
+              <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+              </span>
+          </a>
+        {% endif %}
+        {% if site.github_username %}
+          <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}">
+              <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+          </a>
+        {% endif %}
+        {% if site.email_addr %}
+          <a href="mailto:{{ site.email_addr }}">
+              <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+          </a>
+        {% endif %}
+      </footer>
     </div>
     <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
 
@@ -52,5 +93,8 @@
         ga('send', 'pageview');
     </script>
   {% endif %}
+
+
+
   </body>
 </html>
