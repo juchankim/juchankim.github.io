@@ -7,6 +7,7 @@ description: Software Engineer in Los Angeles, CA
 paginate: 1
 pages_list:       
   ABOUT: '/about'
+  TRAVEL: '/travel'
   ARCHIVE: '/archive'
 instagram_username: __j_kim_
 linkedin_username: juchankim
