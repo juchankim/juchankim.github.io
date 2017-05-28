@@ -2,6 +2,7 @@
 layout: default
 ---
 <div class="wrapper">
+
 	<div id="regions_div"></div>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	    <script type="text/javascript">
@@ -35,8 +36,8 @@ layout: default
 	          ['Switzerland'],
 	        ]);
 	        var options = {legend:null,
-	    					colorAxis: null, 
-	    					magnifyingGlass: {enable: true, zoomFactor: 7.5}};
+	    					colorAxis: null,
+	    					'title':'Places that I have been to'};
 
 	        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
