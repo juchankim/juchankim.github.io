@@ -22,18 +22,13 @@
 
 
 
-        {% for page in site.pages_list %}
-            <p class="view"><a href="{{ page[1]  }}">{{ page[0] }}</a></p>
-        {% endfor %}
-
-<!--         {% if site.github.is_user_page %}
-          <p class="view"><a href="{{ site.github.owner_url }}">GITHUB</a></p>
-        {% endif %}
-
-        <p class="view"><a href="https://www.linkedin.com/in/juchankim/">LINKEDIN</a></p> -->
-
       </header>
       <section>
+        
+
+      {% for page in site.pages_list %}
+          <p class="view"><a href="{{ page[1]  }}">{{ page[0] }}</a></p>
+      {% endfor %}
 
       {{ content }}
 
@@ -62,7 +57,7 @@
           </a>
         {% endif %}
         {% if site.github_username %}
-          <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}">
+          <a href="https://www.github.com/{{ site.github_username }}">
               <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-github fa-stack-1x fa-inverse"></i>

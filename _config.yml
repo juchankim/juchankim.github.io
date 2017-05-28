@@ -8,8 +8,6 @@ paginate: 1
 pages_list:       
   ABOUT: '/about'
   ARCHIVE: '/archive'
-  # RESUME: 'assets/resume.pdf'
-  CONTACT: '/contact'
 instagram_username: __j_kim_
 linkedin_username: juchankim
 github_username: juchankim
