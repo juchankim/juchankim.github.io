@@ -14,7 +14,6 @@ layout: default
 	          ['Country', 'Visited'],
 	          ['Germany', 1],
 	          ['United States', 1],
-	          ['Brazil', 1],
 	          ['China', 1],
 	          ['France', 1],
 	          ['KR', 1],
@@ -33,7 +32,8 @@ layout: default
 	          ['IT',1]
 	        ]);
 
-	        var options = {};
+	        var options = {legend:'none',
+	    					colorAxis: null};
 
 	        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
