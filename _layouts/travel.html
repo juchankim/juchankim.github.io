@@ -1,8 +1,8 @@
 ---
-layout: default
+layout: page
 ---
-<div class="wrapper">
-
+<div class="section">
+	<p>Places that I have been to </p>
 	<div id="regions_div"></div>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	    <script type="text/javascript">
@@ -45,4 +45,7 @@ layout: default
 	      }
 	    </script>
 </div>
+{% for post in site.travels %}
+* {{ post.date | date_to_string }} [ {{ post.title }} ]({{ post.url }})
+{% endfor %}
 

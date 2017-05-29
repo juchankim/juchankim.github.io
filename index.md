@@ -5,6 +5,8 @@ title: Home
 
 <img src="/assets/main copy.gif">
 
+Welcome! 
+
 One of my weaknesses is that I am slow in solving problems.
 That is why I have developed my time management skill to start early to get things done over time.
 This has been a very successful approach during my school years.
@@ -18,7 +20,7 @@ I will attempt a difficult interview problem (from [HackerRank](hackerrank.com))
 But besides that, I hope to talk about my travels, my experiences, and other little things. 
 
 
-Welcome! 
+
 
 
 <!-- Projects posts coming soon.  -->
