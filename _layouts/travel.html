@@ -40,12 +40,38 @@ layout: page
 	    					'title':'Places that I have been to'};
 
 	        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+	        function myClickHandler(){
+	                var selection = chart.getSelection()[0]; // a country
+	                if (selection) {
+	                	var value=data.getValue(selection.row, 0);
+	                	if (value == 'United States') {
+	                		window.location.href = "2007/01/17/usa.html";
+	                	}
+	                } 
 
+	                // var message = '';
+
+	                // for (var i = 0; i < selection.length; i++) {
+	                //   var item = selection[i];
+	                //   if (item.row != null && item.column != null) {
+	                //     message += '{row:' + item.row + ',column:' + item.column + '}';
+	                //   } else if (item.row != null) {
+	                //     message += '{row:' + item.row + '}';
+	                //   } else if (item.column != null) {
+	                //     message += '{column:' + item.column + '}';
+	                //   }
+	                // }
+	                // if (message == '') {
+	                //   message = 'nothing';
+	                // }
+	                // alert(message);
+	                // window.location = url;
+	            }
+
+	            google.visualization.events.addListener(chart, 'select', myClickHandler);
 	        chart.draw(data, options);
 	      }
 	    </script>
 </div>
-{% for post in site.travels %}
-* {{ post.date | date_to_string }} [ {{ post.title }} ]({{ post.url }})
-{% endfor %}
+
 

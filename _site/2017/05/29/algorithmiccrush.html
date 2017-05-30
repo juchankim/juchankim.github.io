@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Juchan Kim</title>
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=fa7e86eb4bc5284bbe12f354f935e6d3d38102d8">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+
+        <a href = "/"><img src="/assets/title.png"></a>
+        <br><br>
+        <!-- <p>Software Engineer in Los Angeles, CA</p> -->
+        
+            <p class="view"><a href="/about">ABOUT</a></p>
+        
+            <p class="view"><a href="/travel">TRAVEL</a></p>
+        
+            <p class="view"><a href="/archive">ARCHIVE</a></p>
+        
+
+
+      </header>
+      <section>
+
+      <div class="page">
+  <p>May 29th, 2017</p>
+
+<p>My second coding challenge was <a href="hhttps://www.hackerrank.com/challenges/crush">“Algorithmic Crush”</a></p>
+
+<p>According to the site,</p>
+
+<p>“You are given a list of size , initialized with zeroes. You have to perform  operations on the list and output the maximum of final values of all the  elements in the list. For every operation, you are given three integers ,  and  and you have to add value  to all the elements ranging from index  to (both inclusive).”</p>
+
+<p>So the first way I thought of was to go through all M operations and increment each indices one by one with k. I was pretty sure that it was going to timeout. And it did.</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">N</span><span class="p">,</span> <span class="n">M</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">int</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">M</span><span class="p">)):</span>
+    <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">k</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">)):</span> <span class="c"># it was 1-indexing</span>
+        <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">arr</span><span class="p">))</span>
+</code></pre>
+</div>
+<p>this is O(MN) since a to b can be the whole N.</p>
+
+<p>So the next way I thought was to just store conveniently such that we can just go through N once and know what the maximum value is instead of going through the whole N M times. The only information we need is the maximum sum so we just need to add from start to end of the array and see what results in the highest sum. To do that, it is important to add k and subtract k at the right positions. Since k is added for a and b inclusive, we want to subtract k at b+1 th index. So going through M operations, update the a and b+1th index with +k and -k respectively. Then, we now have to just go through len(N) array and keep adding the values of each index to see what is the highest value. <em>Note that we need to have len(N+1) array because you want to subtract at b+1th index and b could be the last index.</em></p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">N</span><span class="p">,</span> <span class="n">M</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">M</span><span class="p">)):</span>
+    <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">k</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span>
+    <span class="n">arr</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="n">arr</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">)]</span> <span class="o">-=</span> <span class="nb">int</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+<span class="n">bestVal</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">curVal</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">:</span>
+    <span class="n">curVal</span><span class="o">+=</span><span class="n">i</span>
+    <span class="k">if</span> <span class="n">curVal</span> <span class="o">&gt;</span> <span class="n">bestVal</span><span class="p">:</span>
+        <span class="n">bestVal</span> <span class="o">=</span> <span class="n">curVal</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">bestVal</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>Time Complexity would be O(M+N) [since adding k and -k is constant, the first term is only M.]
+Spatially, the complexity is the same as the first approach.</p>
+
+
+</div>
+
+      </section>
+      <footer>
+        <a href="assets/resume.pdf"> 
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-file-text fa-stack-1x fa-inverse"></i>
+            </span>
+        </a>
+        
+          <a href="https://www.instagram.com/__j_kim_">
+              <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+              </span>
+          </a>
+        
+        
+          <a href="https://www.linkedin.com/in/juchankim">
+              <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+              </span>
+          </a>
+        
+        
+          <a href="https://www.github.com/juchankim">
+              <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+          </a>
+        
+        
+          <a href="mailto:yj1877@berkeley.edu">
+              <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+          </a>
+        
+      </footer>
+    </div>
+    <script src="/assets/js/scale.fix.js"></script>
+
+
+  
+
+
+
+  </body>
+</html>
