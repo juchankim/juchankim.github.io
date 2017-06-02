@@ -1,12 +1,12 @@
 ---
 layout: page
 tags: ['HackerRank']
-title: Algorithmic Crush
+title: Median Updates
 ---
 
-May 29th, 2017
+May 30th, 2017
 
-My second coding challenge was ["Algorithmic Crush"](https://www.hackerrank.com/challenges/crush)
+My third coding challenge was ["Median Updates"](https://www.hackerrank.com/challenges/median)
 
 
 According to the site, 

@@ -14,7 +14,7 @@ This has been a very successful approach during my school years.
 Now that I am out in the real world, I have to be fast but also efficient in solving problems.
 Especially now that I am looking for a full-time job, technical interviews are something that I have to worry about.
 I have to think quickly and come up with a solution in a pressured space.
-Of course, the interviewers are looking for how I am thinking through and not hoping for me to finish the problem in its entirety (maybe not).
+Of course, the interviewers are looking for how I am thinking through and not hoping for me to finish the problem in its entirety.
 I will attempt a difficult interview problem (from [HackerRank](hackerrank.com)) every day and post my own approach here as well as how long I took to do that problem (from thinking about how to start to passing all the tests that HackerRank). By doing so, not only do I want to overcome my weakness but also help others in seeing a new way of solving a problem. 
 
 But besides that, I hope to talk about my travels, my experiences, and other little things. 
