@@ -20,7 +20,7 @@ grab the elements of the layer and put it into an temporary array. So the leftov
 
 Also, I found it useful to take in note of the decreasing M and N for each layer by 2's - which was helpful in looping the layer. 
 
-```python
+<!-- ```python
 M,N,R = input().strip().split(' ')
 grid = []
 
@@ -56,7 +56,7 @@ for i in range(int(min(int(M),int(N))/2)): # each layer
 for G in range(int(M)):
     G_t = ' '.join(grid[G])
     print(G_t)
-```
+``` -->
 By doing this, it will take O(N) where N is the number of elements in the grid. 
 
 Reflection: Although coming up with what to do was easy, implementing took a long time as looping through each layer was little tricky with keeping track of all the variables and getting indices correct. In turns out, it was the "implementation" part that was the hard part of this challenge (looking at the tag that website put this challenge under). Anyway, by doing this first challenge, I found that it is best to do this in the morning so that I don't feel sleepy and end up not being able to keep track of how long it took. (Yes. I failed to time myself.) I still have tomorrow. :)
