@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Juchan Kim</title>
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=2d41f59403b647855b476a85415562fa68558fc9">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+
+        <a href = "/"><img src="/assets/title.png"></a>
+        <br><br>
+        <!-- <p>Software Engineer in Los Angeles, CA</p> -->
+        
+            <p class="view"><a href="/about">ABOUT</a></p>
+        
+            <p class="view"><a href="/travel">TRAVEL</a></p>
+        
+            <p class="view"><a href="/archive">ARCHIVE</a></p>
+        
+
+
+      </header>
+      <section>
+
+      <div class="page">
+  <p>May 28th, 2017</p>
+
+<p>My first coding challenge was <a href="https://www.hackerrank.com/challenges/matrix-rotation-algo">“Matrix Layer Rotation”</a>
+<img src="/assets/postpics/matrix-rotation.png" /></p>
+
+<p>According to the site,</p>
+
+<p>“You are given a 2D matrix, a, of dimension MxN and a positive integer R. You have to rotate the matrix R times and print the resultant matrix. Rotation should be in anti-clockwise direction.”</p>
+
+<p>Seeing that the constraint is that R can go upto 10^9, I realized that naive way of looping through each rotation is very inefficient and probably will lead to timeouts. Looking closely at the image, I saw that rotations happen at each layer and despite the fact that there might be 10^9 rotations, we can eliminate the huge number first of all by using modulo of how many elements there are in each layer. We are guaranteed that the original matrix will come back every len(layer) rotation.</p>
+
+<p>So the best way to do this is to loop through each layer (loop upto half of min(M and N) which is the number of layers)
+grab the elements of the layer and put it into an temporary array. So the leftover from modulo is the index that will be the (0,0) of the grid. From then on, you just keep going through the temporary array and fill the layer again in a clockwise direction (come back to 0th index after reaching the end of the temporary array).</p>
+
+<p>Also, I found it useful to take in note of the decreasing M and N for each layer by 2’s - which was helpful in looping the layer.</p>
+
+<!-- ```python
+M,N,R = input().strip().split(' ')
+grid = []
+
+for G in range(int(M)):
+    G_t = input().strip().split(' ')
+    grid.append(G_t)
+
+for i in range(int(min(int(M),int(N))/2)): # each layer
+    temp = []
+    curM = int(M) - 2*i
+    curN = int(N) - 2*i
+    for j in range(0,curN): # get the top row
+        temp.append(grid[i][i+j])
+    for j in range(1, curM):
+        temp.append(grid[j+i][i+curN-1])
+    for j in range(1, curN):
+        temp.append(grid[i+curM-1][i+curN-1-j])
+    for j in range(1, curM-1):
+        temp.append(grid[i+curM-1-j][i])
+    index = int(R)%len(temp)
+    for j in range(0, curN):
+        grid[i][i+j] = temp[index]
+        index = (index + 1) % len(temp)
+    for j in range(1, curM):
+        grid[j+i][i+curN-1] = temp [index]
+        index = (index + 1) % len(temp)
+    for j in range(1, curN):
+        grid[i+curM-1][i+curN-1-j] = temp[index]
+        index = (index + 1) % len(temp)
+    for j in range(1, curM-1):
+        grid[i+curM-1-j][i] = temp[index]
+        index = (index +1) % len(temp)
+for G in range(int(M)):
+    G_t = ' '.join(grid[G])
+    print(G_t)
+``` -->
+<p>By doing this, it will take O(N) where N is the number of elements in the grid.</p>
+
+<p>Reflection: Although coming up with what to do was easy, implementing took a long time as looping through each layer was little tricky with keeping track of all the variables and getting indices correct. In turns out, it was the “implementation” part that was the hard part of this challenge (looking at the tag that website put this challenge under). Anyway, by doing this first challenge, I found that it is best to do this in the morning so that I don’t feel sleepy and end up not being able to keep track of how long it took. (Yes. I failed to time myself.) I still have tomorrow. :)</p>
+
+
+</div>
+
+      </section>
+      <footer>
+        <a href="assets/resume.pdf"> 
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-file-text fa-stack-1x fa-inverse"></i>
+            </span>
+        </a>
+        
+          <a href="https://www.instagram.com/__j_kim_">
+              <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+              </span>
+          </a>
+        
+        
+          <a href="https://www.linkedin.com/in/juchankim">
+              <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+              </span>
+          </a>
+        
+        
+          <a href="https://www.github.com/juchankim">
+              <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+          </a>
+        
+        
+          <a href="mailto:yj1877@berkeley.edu">
+              <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+          </a>
+        
+      </footer>
+    </div>
+    <script src="/assets/js/scale.fix.js"></script>
+
+
+  
+
+
+
+  </body>
+</html>
