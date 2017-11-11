@@ -8,6 +8,7 @@ paginate: 1
 pages_list:       
   ABOUT: '/about'
   TRAVEL: '/travel'
+  PROJECTS: '/projects'
   ARCHIVE: '/archive'
 instagram_username: __j_kim_
 linkedin_username: juchankim
