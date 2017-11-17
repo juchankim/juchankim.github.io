@@ -3,7 +3,7 @@ layout: page
 title: About
 ---
 <div class = "container">
-<img src="/assets/profile.jpg" height="360" class = "center-block">
+<img src="/assets/profile.jpg" height="360" >
 </div>
 <br>
 I am a software engineer currently based in Los Angeles, CA.
