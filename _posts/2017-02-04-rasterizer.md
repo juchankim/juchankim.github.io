@@ -122,6 +122,8 @@ Since texture is a bitmap image itself, it has its own coordinates. Thus, it is 
         <img src="/assets/proj1/nearest1.png" align="middle"/>
         <figcaption align="middle">nearest sampling, supersample 1</figcaption>
       </td>
+    </tr>
+    <tr>
       <td>
         <img src="/assets/proj1/nearest16.png" align="middle"/>
         <figcaption align="middle">nearest sampling, supersample 16</figcaption>
@@ -132,6 +134,8 @@ Since texture is a bitmap image itself, it has its own coordinates. Thus, it is 
         <img src="/assets/proj1/bilinear1.png" align="middle"/>
         <figcaption align="middle">bilinear sampling, supersample 1</figcaption>
       </td>
+    </tr>
+    <tr>
       <td>
         <img src="/assets/proj1/bilinear16.png" align="middle"/>
         <figcaption align="middle">bilinear sampling, supersample 16</figcaption>
@@ -157,6 +161,8 @@ Of course, as you go up the number of samples per pixel, it takes more time to s
         <img src="/assets/proj1/l0p0.png" align="middle"/>
         <figcaption align="middle">L_ZERO, P_NEAREST</figcaption>
       </td>
+    </tr>
+    <tr>
       <td>
         <img src="/assets/proj1/l0p1.png" align="middle"/>
         <figcaption align="middle">L_ZERO, P_LINEAR</figcaption>
@@ -167,6 +173,8 @@ Of course, as you go up the number of samples per pixel, it takes more time to s
         <img src="/assets/proj1/l1p0.png" align="middle"/>
         <figcaption align="middle">L_NEAREST, P_NEAREST</figcaption>
       </td>
+    </tr>
+    <tr>
       <td>
         <img src="/assets/proj1/l1p1.png" align="middle"/>
         <figcaption align="middle">L_NEAREST, P_LINEAR</figcaption>
