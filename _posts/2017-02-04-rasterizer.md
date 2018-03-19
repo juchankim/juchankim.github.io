@@ -5,22 +5,16 @@ title: Rasterizer
 ---
 
 <h1 align="middle">Project 1: Rasterizer</h1>
-
-
 <div>
-
-<h2 align="middle">Overview</h2>
-<p>Give a high-level overview of what you implemented in this project. Think about what you've built as a whole. Share your thoughts on what interesting things you've learned from completing the project.</p>
-
 <h2 align="middle">Section I: Rasterization</h2>
 
 <h3 align="middle">Part 1: Rasterizing single-color triangles</h3>
 
-<p>First, it was important to implement fill_color in drawrend.h to introduce colors into this project. I realized that each color in Color class was in range from 0 to 1. And the default values are 0 to 255. So I had to make sure to multiply these values to the right scale (by 255) to show the correct RGB values that will be read to the screen. It was also very important to notice that the color variables in Color class were floats while the actual color storaged in each pixel was unsigned char. So I casted into unsigned char to match the convention of color pixel storage. 
+<p>Before anything else, implementing function fill_color in drawrend.h was crucial to introduce colors into this project. In doing so, I noticed that each color in existing Color class is from range 0 to 1. And the default values are 0 to 255. So I had to make sure to multiply these values to the right scale (by 255) to show the correct RGBA values that will be read to the screen. It was also very important to notice that the color variables in Color class were floats while the actual color storaged in each pixel was unsigned char (due to the fact that signed char is from -128 to 127 which means unsigned is 0 to 255). So I casted into unsigned char to match the convention of color pixel storage. 
 <br/><br/>
-The next step was to implement rasterize_triangle following the line testing shown in the lecture. We have to make sure that each of the point is on the right plane for each of the edges. So first I had to generate each of the edges by subtracting one vertex point from another. Then, we need to check if each pixel point (which, in this case, is the center of the pixel +0.5 for both x and y) is inside the triangle by the line check described above. If the dot product of the point vector with each of the line is all on the correct side (>= 0) then fill in the color of the pixel to the given value. Else, don't do anything. 
+The next step was to implement rasterize_triangle function using Point-in-Triangle Test (Three Line Test).  We have to make sure that each point is on the right plane for each of the edges. So first I had to generate each of the edges by subtracting one vertex point from another. Then, we need to check if each pixel point (which, in this case, is the center of the pixel +0.5 for both x and y) is inside the triangle by the line check described above. If the dot product of the point vector with each of the line is all on the correct side (>= 0) then fill in the color of the pixel to the given value using the fill_color function. Else, don't do anything. 
 <br/><br/>
-This algorithm is no worse than one that checks each sample within the bounding box of the triangle because I did the exact thing of creating bounding box of the triangle by getting min max x and y values and only doing the line testing for the points that lie within the box. 
+To maximize performance, I created bounding box of the triangle by getting min max x and y values and only doing the line testing for the points that lie within the box. 
 </p>
 
 <div align="middle">
@@ -36,9 +30,9 @@ This algorithm is no worse than one that checks each sample within the bounding 
 
 
 <h3 align="middle">Part 2: Antialiasing triangles</h3>
-<p>First, it was important to implement get_pixel_color in drawrend.h in order to get a better color of a pixel by averaging colors of subpixels. So I iterate through each of the subpixels and total up the colors and divide it by the number of subpixels to get the average value. 
+<p> To produce smoother edges instead of jagged lines, antialiasing is important. I used supersampling for antialiasing. First, it was important to implement get_pixel_color in drawrend.h in order to get a better color of a pixel by averaging colors of subpixels rather than just one color for each pixel. So I iterated through each of the subpixels and totaled up the colors and divide it by the number of subpixels to get the average value. 
 <br/><br/>
-Then, the next step was to edit rasterize_triangle to support the subpixels. In Part I, it was just about filling the whole pixel by sampling the center of the pixel. However, this time we try to test each subpixel and see if it's inside the triangle or not. Then, I fill the color of the subpixel. After doing that for every subpixel within a pixel, we use get_pixel_color to get the average value of the total pixel for antialising. If there were a lot of jaggies in Part I, this is removed with blurring out the edges and getting a better shapes than before. Blurring out the edges of course does not eliminate the aliasing completely aas the high frequencies are hard to remove if fast changing. However, by supersampling, it gets rid of black and white distinctions between the changes and creates the grey area as well as a smooth transition among the changes by mediating/averaging the two distinct colors. 
+Then, the next step was to edit rasterize_triangle to support the subpixels. In Part I, it was just about filling the whole pixel by sampling the center of the pixel. However, this time we try to test each subpixel and see if it's inside the triangle or not. Then, I fill the color of the subpixel. After doing that for every subpixel within a pixel, we use get_pixel_color to get the average value of the total pixel for antialising. If there were a lot of jaggies in Part I, this is removed with blurring out the edges (through averaging out the color) and getting a better shapes than before. Blurring out the edges of course does not eliminate the aliasing completely aas the high frequencies are hard to remove if fast changing. However, by supersampling, it gets rid of black and white distinctions between the changes and creates the grey area as well as a smooth transition among the changes by mediating/averaging the two distinct colors. 
 <br/><br/>
 You can also see the smoothening effect in the photos below. The photo with sample rate 1 has a lot of jaggies but 16 one looks very smooth due to the blurring out the edges.
 </p>
@@ -49,10 +43,14 @@ You can also see the smoothening effect in the photos below. The photo with samp
         <img src="/assets/proj1/image2.png" align="middle"/>
         <figcaption align="middle">sample rate 1</figcaption>
       </td>
+    </tr>
+    <tr>
       <td>
         <img src="/assets/proj1/image3.png" align="middle"/>
         <figcaption align="middle">sample rate 4</figcaption>
       </td>
+    </tr>
+    <tr>
       <td>
         <img src="/assets/proj1/image4.png" align="middle"/>
         <figcaption align="middle">sample rate 16</figcaption>
@@ -83,7 +81,7 @@ I was trying to make a waving man. So I tilted the torso as well as the head. Th
 
 <h3 align="middle">Part 4: Barycentric coordinates</h3>
 
-<p>Barycentric coordinates are important in interpolating values within a triangle using the pre existing colors of the vertices. Smaller triangle across a vertex is the percentage of the color of the vertex (one of the values of alpha, beta, gamma). So at that point, we calculate the percentage of the colors and sum up all the percentage * color of each vertex and get the interpolated color of that point (Final Color = alpha * ColorA + beta * ColorB + gamma * ColorC). In the end, a triangle will be smoothly blended color triangle. 
+<p>Barycentric coordinates are important in interpolating values within a triangle using the pre existing colors of the vertices. Smaller triangle across a vertex is the percentage of the color of the vertex (one of the values of alpha, beta, gamma). So at that point, we calculate the percentage of the colors and sum up all the percentage * color of each vertex and get the interpolated color of that point (Final Color = alpha * ColorA + beta * ColorB + gamma * ColorC). In the end, a triangle will be smoothly blended color triangle. So if non-NULL Triangle pointer is passed in, get the alpha, beta, gamma using the barycentric coordinates formula (proportional distance) as well as taking note that they all add to become 1. 
 <br/><br/>
 <div align="middle">
   <table style="width=100%">
@@ -92,6 +90,14 @@ I was trying to make a waving man. So I tilted the torso as well as the head. Th
         <img src="/assets/proj1/image6.png" align="middle"/>
         <figcaption align="middle">alpha, beta, gamma as percentages of that color</figcaption>
       </td>
+    </tr>
+    <tr>
+      <td>
+        <img src="/assets/proj1/image6_5.png" align="middle"/>
+        <figcaption align="middle">barycentric coordinates formula (proportinal distances) </figcaption>
+      </td>
+    </tr>
+    <tr>
       <td>
         <img src="/assets/proj1/image7.png" align="middle"/>
         <figcaption align="middle">color wheel with default viewing parameters and sample rate 1</figcaption>

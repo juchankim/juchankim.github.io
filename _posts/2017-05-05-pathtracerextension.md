@@ -28,7 +28,7 @@ title: Extension of PathTracer
   <h4 id="by-juchan-kim-kai-sern-lim">by Juchan Kim &amp; Kai-Sern Lim</h4>
   <h2 id="abstract">Abstract</h2>
 
-  <p>We attempted to extend the raytracer project from class and implement subsurface scattering in order to render translucent materials. Translucent materials do not reflect light in all directions when light hits it, some of the light goes within the material and scatters within, being emitted at other nearby locations. The Jensen paper proposes a combination of dipole model (modeling diffusion) and a single scattering model.</p>
+  <p>We attempted to extend the raytracer project and implement subsurface scattering in order to render translucent materials. Translucent materials do not reflect light in all directions when light hits it, some of the light goes within the material and scatters within, being emitted at other nearby locations. The Jensen paper proposes a combination of dipole model (modeling diffusion) and a single scattering model.</p>
 
   <img src="/assets/finalProj/bssrdf.png">
 
